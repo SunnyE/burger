@@ -27,7 +27,7 @@ var orm ={
         })
     }, 
 
-    consumerBurger: function(burg, callback){
+    consumeBurger: function(burg, callback){
         connection.query("UPDATE burgers SET devoured=TRUE WHERE burger_name=?", [burg], function(err, result){
             if(err){throw err}
 
