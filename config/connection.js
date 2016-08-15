@@ -18,5 +18,8 @@ var connection = mysql.createConnection(source.heroku);
 
 connection.connect(function(err){
     if(err){throw err};
-    return; 
-})
+    console.log('connected as id');
+
+});
+
+module.exports = connection; 
