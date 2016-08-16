@@ -1,5 +1,5 @@
 var connection = require('/connection.js');
-
+// creating queryies for Mysql 
 var orm ={
     
     uneatenBurgerQ : function(callback){
