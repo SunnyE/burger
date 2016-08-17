@@ -1,3 +1,5 @@
+// setup connection to mysql database 
+
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
@@ -10,7 +12,6 @@ var connection = mysql.createConnection({
 connection.connect(function(err){
     if(err){throw err};
     console.log('connected as id' + connection.threadId);
-
 });
 
 module.exports.connection = connection; 

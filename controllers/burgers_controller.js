@@ -1,6 +1,8 @@
 var express = require('express');
-
+var methodOverride = require('method-override');
+var router = express.Router();
 var burger = require('../models/burger.js');
+var bodyParser = require('body-parser');
 
 model.exports = function(app){
     
