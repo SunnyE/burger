@@ -8,7 +8,23 @@ var burger = {
     },
 
     eatenDisplay : function(callback){
-        orm.geteatenBurgerQ
+        orm.geteatenBurgerQ(function(data){
+            callback(data);
+        })
+    },
+
+    addburg: function(burger, callback){
+        orm.addBurger(burger, function(){
+            callback();
+        });
+    },
+
+    eatburg: function(burger, callback){
+        orm.consumeBurger(burger, function(){
+            callback();
+        });
     }
 
 }
+
+module.exports = burger; 
