@@ -1,6 +1,46 @@
 <div>   
     <div class="col-md-12">
         
+        <div id="createBurger">
+            <form action="/create" class="form-inline" method="POST">
+                <div class="form-group">
+                    <label for="name">
+                        Name your Burger
+                    </label>
+                    <input type="text" class="form-control" name='burgerName' id='nameThyBurger' placeholder="Name Thy Burger">
+                </div>
+                
+                <button type="submit" class="btn btn-large btn-block btn-default"> Sire Thy Burger</button>
+                
+            </form>
+        </div>
 
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-8">
+        <div class = "menu">
+            <p> CHECK OUT OUR BURGERS </p>
+            {{#each new}}
+                <div class='burgerOut'>
+                    <form action="/devoured/{{id}}" method="POST">
+                        <h4>{{burger_name}}</h4>
+                        <input type="hidden" name="id" value="{{id}}">
+                        
+                        <button type="submit" class="btn btn-large btn-block btn-default">Devour</button>
+                    </form>
+                </div>
+                {{/each}}
+        </div>
+    </div>
+
+
+
+    <div class="col-md-8">
+        <div class="burgers">
+
+        </div>
     </div>
 </div>
