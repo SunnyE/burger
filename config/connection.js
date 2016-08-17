@@ -1,25 +1,16 @@
 var mysql = require('mysql');
 
-var contions = {
-    localsql : {
-        port: 3000,
+var connection = mysql.createConnection({
         host: 'localhost',
         database: 'burgers_db',
         user: 'root',
         password: ''
-    },
-    heroku: {
-        port:3306,
-
-    }
-}
-
-var connection = mysql.createConnection(source.heroku);
+    });
 
 connection.connect(function(err){
     if(err){throw err};
-    console.log('connected as id');
+    console.log('connected as id' + connection.threadId);
 
 });
 
-module.exports = connection; 
+module.exports.connection = connection; 
