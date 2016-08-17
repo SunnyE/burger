@@ -40,7 +40,12 @@
 
     <div class="col-md-8">
         <div class="burgers">
-
+                <p> Burgers you doth slain </p>
+                        {{#each devoured}}
+                            <div class ='burgerOut'>
+                                <p>{{burger_name}}</p>
+                            </div>
+                        {{/each}}
         </div>
     </div>
 </div>

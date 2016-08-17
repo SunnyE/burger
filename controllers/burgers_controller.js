@@ -18,25 +18,25 @@ model.exports = function(app){
         });
     })
 
-    app.post("/api/add", function(req, res){
-        var burgerToAdd = req.body;
+    app.post("/create", function(req, res){
+        var burgerToAdd = req.body.burgerName;
 
-        burger.addNew(burgerToAdd.name, function(){
+        burger.addNew(burgerToAdd, function(){
+            res.redirect('/');
             res.end("{'sucess': 'updated sucessfully', 'status': 200}");
         });
     })
 
 
-    app.put("/api/eat", function(req, res){
+    app.post("/devoured/:id", function(req, res){
         var burgerGone = req.body;
-
         burger.consumeBurger(burgerGone.name, function(){
+            res.redirect('/')
             res.end("{'success': 'Updated!', 'status': 200}");
+            
         }); 
     })
 
-    app.get('/', function(req, res){
-        res.render("../views/index/html");
-    })
+    
 
 } 
