@@ -2,33 +2,39 @@ var connection = require('./connection.js');
 // creating queryies for Mysql 
 var orm ={
     
-    uneatenBurgerQ : function(callback){
-
-        connection.query('SELECT * FROM burgers WHERE devoured = FALSE ORDER BY date ASC', function(err, result){
+    getAll : function(table, callback){
+        var query = "SELECT * FROM " + table; 
+        connection.query(query, function(err, result){
             if(err){throw err}
 
             callback(result); 
         });
     },
 
-    eatenBurgerQ: function(callback){
-        connection.query("SELECT * FROM burgers WHERE devoured = TRUE order by date DESC", function(err, result){
-            if (err){throw err}
 
-            callback(result);
-        })
-    },
+    create: function(table, burgName){
+        var freshBurger = {
+            burgerName  = burgName,
+            devoured: false
+        }
 
-    addBurger: function(burg, callback){
-        connection.query("INSERT INTO burgers VALUES (null, ?, FALSE, CURRRENT_TIMESTAMP)", [burg], function(err, result){
+        var query = "INSERT INTO " + table + "SET ?"
+        connection.query(query, freshBurger, function(err, result){
             if(err){throw err}
 
             callback();
         })
     }, 
 
-    consumeBurger: function(burg, callback){
-        connection.query("UPDATE burgers SET devoured=TRUE WHERE burger_name=?", [burg], function(err, result){
+    update: function(table, id){
+
+        var toUpdate =[
+            {devoured: true},
+            {id:id}
+        ];
+
+        var query = "UPDATE " + table + ' SET ? WHERE ?';
+        connection.query(query, toUpdate, function(err, result){
             if(err){throw err}
 
             callback();

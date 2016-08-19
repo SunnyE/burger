@@ -22,6 +22,8 @@ app.engine('handlebars', handlebars({
 }));
 
 app.use('/', routes);
+app.use('/update', routes);
+app.use('/create', routes);
 
 app.set('view engine', 'handlebars');
 
