@@ -5,20 +5,19 @@ var burger = require('../models/burger.js');
 var bodyParser = require('body-parser');
 
 model.exports = function(app){
+
+
     
-    app.get("/app/uneatenBurgerQ", function(req,res){
-        burger.uneatenDisplay(function(data){
-            res.json(data);
+    router.get("/", function(req,res){
+        burger.getAll(function(data){
+
+            
+            res.render('index', data);
         });
     })
 
-    app.get("/api/eatenBurgerQ", function(req, res){
-        burger.eatenDisplay(function(data){
-            res.json(data);
-        });
-    })
 
-    app.post("/create", function(req, res){
+    router.post("/create", function(req, res){
         var burgerToAdd = req.body.burgerName;
 
         burger.addNew(burgerToAdd, function(){
@@ -28,7 +27,7 @@ model.exports = function(app){
     })
 
 
-    app.post("/devoured/:id", function(req, res){
+    router.post("/devoured/:id", function(req, res){
         var burgerGone = req.body;
         burger.consumeBurger(burgerGone.name, function(){
             res.redirect('/')

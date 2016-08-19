@@ -1,30 +1,20 @@
 var orm = require('../config/orm.js');
 
 var burger = {
-    uneatenDisplay : function(callback){
-        orm.getuneatenBurgerQ(function(deata){
+    
+        all : function(callback){
+        orm.getAll(function(data){
             callback(data);
         })
     },
-
-    eatenDisplay : function(callback){
-        orm.geteatenBurgerQ(function(data){
-            callback(data);
-        })
+    
+    create : function(burger) {
+        orm.addTo('burgers', burgName);
     },
 
-    addburg: function(burger, callback){
-        orm.addBurger(burger, function(){
-            callback();
-        });
-    },
-
-    eatburg: function(burger, callback){
-        orm.consumeBurger(burger, function(){
-            callback();
-        });
+    update: function(id){
+        orm.update('burgers', id);
     }
 
-}
+};
 
-module.exports = burger; 

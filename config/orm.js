@@ -12,7 +12,7 @@ var orm ={
     },
 
 
-    create: function(table, burgName){
+    addTo: function(table, burgName){
         var freshBurger = {
             burgerName  = burgName,
             devoured: false
